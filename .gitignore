@@ -1,0 +1,9 @@
+node_modules
+.next
+out
+.vercel
+output/playwright
+.playwright-cli
+*.log
+.DS_Store
+*.tsbuildinfo
