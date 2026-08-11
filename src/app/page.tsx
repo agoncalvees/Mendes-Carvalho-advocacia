@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { ButtonLink } from "@/components/button-link";
 import { FinalCta } from "@/components/final-cta";
-import { InsightGrid } from "@/components/insight-grid";
+import { HomeBlog } from "@/components/home-blog";
 import { ProfessionalGrid } from "@/components/professional-grid";
 import { Reveal } from "@/components/reveal";
 import { ResponsiveImage } from "@/components/responsive-image";
-import { areas, insights, professionals } from "@/data/site.mock";
+import { insights, professionals } from "@/data/site.mock";
 import { assets } from "@/lib/assets";
 
 export const metadata: Metadata = {
@@ -32,7 +32,6 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-gradient-to-r from-ink/95 via-ink/75 to-ink/5" aria-hidden="true" />
         <div className="shell relative flex min-h-[calc(100dvh-var(--header-height))] items-center py-16 md:py-20">
           <Reveal className="max-w-4xl">
-            <p className="eyebrow text-[#a9bcff]">Advocacia empresarial estratégica</p>
             <h1 className="display-title max-w-[16ch] text-paper">
               Direito para decisões que movem negócios.
             </h1>
@@ -55,7 +54,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section-space bg-paper">
+      <section className="home-section-space bg-paper">
         <div className="shell grid items-end gap-12 md:grid-cols-12">
           <Reveal className="md:col-span-5 md:pb-10">
             <h2 className="section-title">Participamos antes que o desafio se torne um problema.</h2>
@@ -79,7 +78,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section-space border-y border-line bg-cobalt-soft/60">
+      <section className="home-section-space border-y border-line bg-cobalt-soft/60">
         <div className="shell grid gap-12 md:grid-cols-12 md:items-center">
           <Reveal className="image-frame aspect-[4/5] md:col-span-5">
             <Image
@@ -91,68 +90,30 @@ export default function HomePage() {
             />
           </Reveal>
           <Reveal className="md:col-span-6 md:col-start-7" delay={0.06}>
-            <h2 className="section-title max-w-[12ch]">Ativos intelectuais no centro da estratégia.</h2>
-            <p className="lead mt-7">
-              Marcas, software, criações e licenças exigem uma proteção coerente com produto, mercado e crescimento.
+            <h2 className="section-title max-w-[12ch]">Atuação jurídica conectada ao negócio.</h2>
+            <p className="body-copy mt-6">
+              Reunimos diferentes especialidades para acompanhar empresas em operações, projetos, contratos e situações de risco.
             </p>
-            <div className="mt-9 grid gap-4 border-t border-cobalt/25 pt-6 sm:grid-cols-2">
+            <div className="mt-8 grid divide-y divide-cobalt/25 border-y border-cobalt/25 lg:grid-cols-3 lg:divide-x lg:divide-y-0">
               {[
-                "Marcas e identidade",
-                "Software e autoria",
-                "Licenciamento",
-                "Concorrência desleal",
+                "Negócios e operações",
+                "Marcas, tecnologia e dados",
+                "Riscos e disputas",
               ].map((item) => (
-                <p key={item} className="text-sm font-semibold text-ink">
+                <p key={item} className="py-5 text-sm font-semibold leading-6 text-ink lg:px-4 lg:first:pl-0 lg:last:pr-0">
                   {item}
                 </p>
               ))}
             </div>
-            <Link href="/areas-de-atuacao/propriedade-intelectual" className="editorial-link mt-8">
-              Ver Propriedade Intelectual
+            <Link href="/areas-de-atuacao" className="editorial-link mt-7">
+              Conheça todas as áreas
               <ArrowRight aria-hidden="true" size={18} strokeWidth={1.5} />
             </Link>
           </Reveal>
         </div>
       </section>
 
-      <section className="section-space bg-paper">
-        <div className="shell">
-          <Reveal className="max-w-4xl">
-            <p className="eyebrow">Áreas de atuação</p>
-            <h2 className="section-title max-w-[15ch]">Visão jurídica integrada para decisões empresariais.</h2>
-          </Reveal>
-          <div className="mt-16 grid gap-0 md:grid-cols-2 md:gap-x-16">
-            {areas.map((area, index) => (
-              <Reveal key={area.slug} delay={(index % 2) * 0.04}>
-                <Link
-                  href={`/areas-de-atuacao/${area.slug}`}
-                  className="group flex min-h-[144px] items-start justify-between gap-7 border-t border-line py-6 transition-colors hover:text-cobalt"
-                >
-                  <div>
-                    <p className="text-xs font-semibold text-muted">{String(index + 1).padStart(2, "0")}</p>
-                    <h3 className="mt-3 font-serif text-[1.75rem] font-medium leading-tight tracking-[-0.025em]">
-                      {area.name}
-                    </h3>
-                  </div>
-                  <ArrowUpRight
-                    aria-hidden="true"
-                    size={20}
-                    strokeWidth={1.5}
-                    className="mt-1 shrink-0 transition-transform duration-200 group-hover:translate-x-1 group-hover:-translate-y-1"
-                  />
-                </Link>
-              </Reveal>
-            ))}
-          </div>
-          <div className="mt-10">
-            <ButtonLink href="/areas-de-atuacao" variant="secondary">
-              Conheça nossa atuação
-            </ButtonLink>
-          </div>
-        </div>
-      </section>
-
-      <section className="section-space border-y border-line bg-surface">
+      <section className="home-section-space border-y border-line bg-surface">
         <div className="wide-shell grid gap-12 md:grid-cols-12 md:items-center">
           <Reveal className="md:col-span-5">
             <h2 className="section-title max-w-[12ch]">Clareza para agir antes, durante e depois da decisão.</h2>
@@ -182,39 +143,25 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section-space bg-paper">
+      <section className="bg-paper py-[clamp(56px,5.5vw,80px)]">
         <div className="shell">
           <Reveal className="max-w-3xl">
-            <h2 className="section-title">Especialistas próximos da decisão.</h2>
-            <p className="lead mt-6">
-              Uma equipe fictícia criada para demonstrar a experiência editorial completa deste projeto.
+            <h2 className="section-title">Quem conduz nossa atuação</h2>
+            <p className="body-copy mt-5">
+              Experiência técnica, participação próxima e conhecimento do ambiente empresarial.
             </p>
           </Reveal>
-          <div className="mt-14">
-            <ProfessionalGrid professionals={professionals.slice(0, 3)} />
+          <div className="mt-8">
+            <ProfessionalGrid professionals={professionals.slice(0, 3)} variant="compact" />
           </div>
-          <Link href="/profissionais" className="editorial-link mt-10">
-            Conheça os profissionais
+          <Link href="/profissionais" className="editorial-link mt-6">
+            Conheça todos os profissionais
             <ArrowRight aria-hidden="true" size={18} strokeWidth={1.5} />
           </Link>
         </div>
       </section>
 
-      <section className="section-space border-t border-line bg-paper">
-        <div className="shell">
-          <Reveal className="max-w-3xl">
-            <p className="eyebrow">Insights</p>
-            <h2 className="section-title">Leituras para decisões em movimento.</h2>
-          </Reveal>
-          <div className="mt-14">
-            <InsightGrid insights={insights} />
-          </div>
-          <Link href="/insights" className="editorial-link mt-10">
-            Ver todos os insights
-            <ArrowRight aria-hidden="true" size={18} strokeWidth={1.5} />
-          </Link>
-        </div>
-      </section>
+      <HomeBlog insights={insights} />
 
       <FinalCta />
     </>

@@ -16,7 +16,6 @@ export default function OfficePage() {
   return (
     <>
       <PageHero
-        label="O Escritório"
         title="Direito, estratégia e negócio na mesma mesa."
         description="Uma banca empresarial fictícia criada para atuar perto das decisões que definem ativos, operações e crescimento."
         image={assets.officeHero}
@@ -73,7 +72,6 @@ export default function OfficePage() {
       <section className="section-space bg-paper">
         <div className="shell">
           <Reveal className="max-w-3xl">
-            <p className="eyebrow">Princípios de atuação</p>
             <h2 className="section-title">Clareza para decisões complexas.</h2>
           </Reveal>
           <div className="mt-14 grid gap-x-12 gap-y-10 md:grid-cols-3">

@@ -47,7 +47,6 @@ export default async function InsightPage({ params }: Props) {
         <header className="border-y border-line bg-paper">
           <div className="shell py-14 md:py-24">
             <Reveal className="max-w-5xl">
-              <p className="eyebrow">{insight.category}</p>
               <h1 className="page-title max-w-[18ch]">{insight.title}</h1>
               <p className="lead mt-7">{insight.summary}</p>
               <div className="mt-8 flex flex-wrap gap-x-7 gap-y-2 text-sm text-muted">

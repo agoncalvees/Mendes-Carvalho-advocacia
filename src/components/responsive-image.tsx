@@ -27,7 +27,11 @@ export function ResponsiveImage({
   });
 
   if (!mobileSrc) {
-    return <img {...desktopProps} className={className} />;
+    return (
+      // getImageProps supplies optimized responsive attributes without adding a wrapper element.
+      // eslint-disable-next-line @next/next/no-img-element
+      <img {...desktopProps} alt={alt} className={className} />
+    );
   }
 
   const { props: mobileProps } = getImageProps({
@@ -41,7 +45,8 @@ export function ResponsiveImage({
   return (
     <picture>
       <source media="(max-width: 767px)" srcSet={mobileProps.srcSet} sizes="100vw" />
-      <img {...desktopProps} className={className} />
+      {/* getImageProps supplies optimized responsive attributes without adding a wrapper element. */}
+      <img {...desktopProps} alt={alt} className={className} />
     </picture>
   );
 }

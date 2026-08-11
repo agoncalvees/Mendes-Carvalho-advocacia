@@ -5,7 +5,6 @@ import { ResponsiveImage } from "@/components/responsive-image";
 type PageHeroProps = {
   title: string;
   description: string;
-  label?: string;
   image?: string;
   mobileImage?: string;
   imageAlt?: string;
@@ -16,7 +15,6 @@ type PageHeroProps = {
 export function PageHero({
   title,
   description,
-  label,
   image,
   mobileImage,
   imageAlt = "",
@@ -31,7 +29,6 @@ export function PageHero({
             image ? "lg:col-span-6 lg:pr-16 xl:pr-24" : "max-w-4xl"
           }`}
         >
-          {label ? <p className="eyebrow">{label}</p> : null}
           <h1 className="page-title max-w-[12ch]">{title}</h1>
           <p className="lead mt-7">{description}</p>
           {children ? <div className="mt-9 flex flex-wrap gap-3">{children}</div> : null}

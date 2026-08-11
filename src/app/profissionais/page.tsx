@@ -15,7 +15,6 @@ export default function ProfessionalsPage() {
   return (
     <>
       <PageHero
-        label="Profissionais"
         title="Diferentes especialidades. Uma só leitura do negócio."
         description="A equipe demonstrativa combina experiência empresarial, proximidade e capacidade de trabalhar de forma integrada."
         image={assets.professionalsTeam}

@@ -49,9 +49,14 @@ export const siteInfo = {
   city: "São Paulo, SP",
   address: "Avenida Horizonte, 420, 12º andar, São Paulo - SP",
   addressNote: "Endereço demonstrativo de projeto conceitual",
-  email: "contato@mendescarvalho.example",
-  phone: "+55 (11) 0000-0000",
-  whatsapp: "+55 (11) 90000-0000",
+  email: "contato@mendescarvalho.com.br",
+  emailHref: "mailto:contato@mendescarvalho.com.br",
+  phone: "+55 (11) 99173-8399",
+  phoneE164: "+5511991738399",
+  phoneHref: "tel:+5511991738399",
+  whatsapp: "+55 (11) 99982-3059",
+  whatsappE164: "+5511999823059",
+  whatsappHref: "https://wa.me/5511999823059",
 } as const;
 
 export const areas: PracticeArea[] = [

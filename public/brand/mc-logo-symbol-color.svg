@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 170" role="img" aria-labelledby="title desc">
+  <title id="title">Símbolo Mendes &amp; Carvalho</title>
+  <desc id="desc">Monograma MC geométrico em azul cobalto e carvão.</desc>
+  <path d="M128 65C118 53 106 48 93 48C69 48 53 65 53 90C53 115 69 132 93 132C107 132 119 126 128 114"
+        fill="none" stroke="#2147B7" stroke-width="16" stroke-linecap="butt"/>
+  <path d="M30 132V32L70 66L110 32V72M70 66V144"
+        fill="none" stroke="#111B24" stroke-width="16" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>

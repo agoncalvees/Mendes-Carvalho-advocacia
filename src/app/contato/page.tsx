@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { Mail, MessageSquareText, Phone } from "lucide-react";
 import { ContactForm } from "@/components/contact-form";
 import { PageHero } from "@/components/page-hero";
@@ -9,14 +8,41 @@ import { assets } from "@/lib/assets";
 
 export const metadata: Metadata = {
   title: "Contato",
-  description: "Fale com a equipe demonstrativa do Mendes & Carvalho Advogados.",
+  description: `Fale com a equipe do Mendes & Carvalho Advogados pelo e-mail ${siteInfo.email} ou telefone ${siteInfo.phone}.`,
+};
+
+const contactStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "LegalService",
+  name: siteInfo.name,
+  email: siteInfo.email,
+  telephone: siteInfo.phoneE164,
+  contactPoint: [
+    {
+      "@type": "ContactPoint",
+      contactType: "Atendimento",
+      email: siteInfo.email,
+      telephone: siteInfo.phoneE164,
+      availableLanguage: "Portuguese",
+    },
+    {
+      "@type": "ContactPoint",
+      contactType: "WhatsApp",
+      telephone: siteInfo.whatsappE164,
+      url: siteInfo.whatsappHref,
+      availableLanguage: "Portuguese",
+    },
+  ],
 };
 
 export default function ContactPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(contactStructuredData).replace(/</g, "\\u003c") }}
+      />
       <PageHero
-        label="Contato"
         title="Vamos entender a decisão antes de falar sobre a resposta."
         description="Compartilhe o contexto geral do seu negócio. Este formulário é apenas demonstrativo e não envia dados."
         image={assets.contactDesktop}
@@ -30,12 +56,18 @@ export default function ContactPage() {
           <Reveal className="md:col-span-4">
             <h2 className="section-title">Fale com nossa equipe.</h2>
             <p className="body-copy mt-6">
-              Os canais e o endereço abaixo são fictícios. Eles demonstram como a experiência institucional seria apresentada em uma versão real.
+              Os canais abaixo são oficiais. O endereço permanece demonstrativo neste projeto conceitual.
             </p>
             <div className="mt-9 space-y-6 border-t border-line pt-6">
-              <ContactLine icon="email" label="E-mail" value={siteInfo.email} href={`mailto:${siteInfo.email}`} />
-              <ContactLine icon="phone" label="Telefone" value={siteInfo.phone} />
-              <ContactLine icon="whatsapp" label="WhatsApp secundário" value={siteInfo.whatsapp} />
+              <ContactLine icon="email" label="E-mail" value={siteInfo.email} href={siteInfo.emailHref} />
+              <ContactLine icon="phone" label="Telefone" value={siteInfo.phone} href={siteInfo.phoneHref} />
+              <ContactLine
+                icon="whatsapp"
+                label="WhatsApp secundário"
+                value={siteInfo.whatsapp}
+                href={siteInfo.whatsappHref}
+                external
+              />
             </div>
             <div className="mt-10 border-t border-line pt-6">
               <p className="text-sm font-semibold">{siteInfo.city}</p>
@@ -57,11 +89,13 @@ function ContactLine({
   label,
   value,
   href,
+  external = false,
 }: {
   icon: "email" | "phone" | "whatsapp";
   label: string;
   value: string;
   href?: string;
+  external?: boolean;
 }) {
   const Icon = icon === "email" ? Mail : icon === "phone" ? Phone : MessageSquareText;
   const content = (
@@ -74,7 +108,12 @@ function ContactLine({
     </>
   );
   return href ? (
-    <a href={href} className="flex min-h-11 gap-4 hover:text-cobalt">
+    <a
+      href={href}
+      className="flex min-h-11 gap-4 hover:text-cobalt"
+      target={external ? "_blank" : undefined}
+      rel={external ? "noopener noreferrer" : undefined}
+    >
       {content}
     </a>
   ) : (

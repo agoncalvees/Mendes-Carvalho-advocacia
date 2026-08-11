@@ -25,7 +25,7 @@ export function SiteFooter() {
               Profissionais
             </Link>
             <Link className="min-h-11 py-2 hover:text-[#9eb5ff]" href="/insights">
-              Insights
+              Blog
             </Link>
             <Link className="min-h-11 py-2 hover:text-[#9eb5ff]" href="/contato">
               Contato
@@ -52,16 +52,44 @@ export function SiteFooter() {
 
         <div className="md:col-span-2">
           <p className="mb-4 text-xs font-semibold uppercase tracking-[0.14em] text-paper/55">
-            São Paulo
+            Contato
           </p>
-          <p className="text-sm leading-6 text-paper/80">{siteInfo.address}</p>
-          <p className="mt-3 text-xs leading-5 text-paper/50">{siteInfo.addressNote}</p>
+          <div className="flex min-w-0 flex-col items-start gap-1 text-sm [overflow-wrap:anywhere]">
+            <a className="min-h-11 py-2 text-paper/80 hover:text-[#9eb5ff]" href={siteInfo.emailHref}>
+              {siteInfo.email}
+            </a>
+            <a className="min-h-11 py-2 text-paper/80 hover:text-[#9eb5ff]" href={siteInfo.phoneHref}>
+              {siteInfo.phone}
+            </a>
+            <a
+              className="min-h-11 py-2 text-paper/80 hover:text-[#9eb5ff]"
+              href={siteInfo.whatsappHref}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              WhatsApp {siteInfo.whatsapp}
+            </a>
+          </div>
         </div>
       </div>
 
       <div className="shell flex flex-col gap-3 border-t border-paper/15 py-6 text-xs leading-5 text-paper/55 sm:flex-row sm:items-center sm:justify-between">
         <p>Projeto conceitual. Escritório, equipe e dados apresentados são fictícios.</p>
-        <p>© 2026 Mendes & Carvalho Advogados</p>
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-1 sm:justify-end">
+          <p>© 2026 Mendes & Carvalho Advogados</p>
+          <p>
+            Desenvolvido por{" "}
+            <a
+              href="https://www.instagram.com/arthurgoncalvees/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram de Arthur Gonçalves, desenvolvedor do site"
+              className="developer-credit-link"
+            >
+              Arthur Gonçalves
+            </a>
+          </p>
+        </div>
       </div>
     </footer>
   );

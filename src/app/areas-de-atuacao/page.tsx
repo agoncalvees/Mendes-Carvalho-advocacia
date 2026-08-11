@@ -16,7 +16,6 @@ export default function AreasPage() {
   return (
     <>
       <PageHero
-        label="Áreas de Atuação"
         title="Especialidades conectadas pelo contexto do negócio."
         description="Cada prática atua com profundidade própria. Juntas, ajudam a organizar riscos, oportunidades e decisões que atravessam a empresa."
         image={assets.areasHero}

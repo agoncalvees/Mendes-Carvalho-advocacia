@@ -28,10 +28,7 @@ export function AreaGrid({ areas }: { areas: PracticeArea[] }) {
             </div>
             <div className="flex flex-col justify-between py-7 md:col-span-5 md:py-2">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-cobalt">
-                  Prática em destaque
-                </p>
-                <h2 className="section-title mt-5">{featured.name}</h2>
+                <h2 className="section-title">{featured.name}</h2>
                 <p className="body-copy mt-6">{featured.summary}</p>
               </div>
               <span className="mt-8 inline-flex min-h-11 items-center gap-3 font-semibold text-cobalt group-hover:text-cobalt-hover">

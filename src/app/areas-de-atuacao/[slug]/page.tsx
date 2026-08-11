@@ -46,7 +46,6 @@ export default async function AreaDetailPage({ params }: Props) {
         ]}
       />
       <PageHero
-        label="Área de atuação"
         title={area.name}
         description={area.lead}
         image={area.image}
@@ -114,7 +113,6 @@ export default async function AreaDetailPage({ params }: Props) {
       <section className="section-space border-y border-line bg-paper">
         <div className="shell">
           <Reveal className="max-w-3xl">
-            <p className="eyebrow">Profissionais relacionados</p>
             <h2 className="section-title">Experiência conectada ao tema.</h2>
           </Reveal>
           <div className="mt-14">

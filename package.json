@@ -5,23 +5,30 @@
   "scripts": {
     "dev": "node ./node_modules/next/dist/bin/next dev",
     "build": "node ./node_modules/next/dist/bin/next build",
-    "start": "node ./node_modules/next/dist/bin/next start",
-    "typecheck": "node ./node_modules/typescript/bin/tsc --noEmit"
+    "build:hostinger": "npm run build && node ./scripts/prepare-hostinger.mjs",
+    "lint": "node ./node_modules/eslint/bin/eslint.js src scripts next.config.ts eslint.config.mjs",
+    "typecheck": "node ./node_modules/next/dist/bin/next typegen && node ./node_modules/typescript/bin/tsc --noEmit"
   },
   "dependencies": {
+    "@radix-ui/react-slot": "^1.3.3",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
     "lucide-react": "1.31.0",
     "motion": "13.1.0",
     "next": "16.3.0",
     "react": "19.2.8",
-    "react-dom": "19.2.8"
+    "react-dom": "19.2.8",
+    "tailwind-merge": "^3.6.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "4.3.3",
     "@types/node": "26.2.0",
     "@types/react": "19.2.18",
     "@types/react-dom": "19.2.4",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "^16.3.0",
     "postcss": "8.5.26",
     "tailwindcss": "4.3.3",
-    "typescript": "7.0.2"
+    "typescript": "^5.9.3"
   }
 }

@@ -1,24 +1,19 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Newsreader } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { assets } from "@/lib/assets";
+import { siteUrl } from "@/lib/site-url";
 import "./globals.css";
 
-const geist = Geist({
+const montFallback = Montserrat({
   subsets: ["latin"],
-  variable: "--font-geist",
-  display: "swap",
-});
-
-const newsreader = Newsreader({
-  subsets: ["latin"],
-  variable: "--font-newsreader",
+  variable: "--font-mont-fallback",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://mendescarvalho.example"),
+  metadataBase: new URL(siteUrl),
   title: {
     default: "Mendes & Carvalho Advogados",
     template: "%s | Mendes & Carvalho Advogados",
@@ -45,7 +40,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="pt-BR" className={`${geist.variable} ${newsreader.variable}`}>
+    <html lang="pt-BR" className={montFallback.variable}>
       <body>
         <a href="#conteudo" className="skip-link">
           Ir para o conteúdo principal

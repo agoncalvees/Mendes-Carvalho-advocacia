@@ -1,9 +1,21 @@
 node_modules
 .next
 out
+dist
 .vercel
-output/playwright
+output
 .playwright-cli
 *.log
+*.zip
 .DS_Store
 *.tsbuildinfo
+
+# Local project governance and source material (not needed by Vercel)
+CLAUDE.md
+memoria.md
+specs/
+imagens.md
+imagens-site/
+logos/
+meus-produtos/
+referencias/

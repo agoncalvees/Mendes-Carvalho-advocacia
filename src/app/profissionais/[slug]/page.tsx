@@ -56,10 +56,9 @@ export default async function ProfessionalPage({ params }: Props) {
             />
           </Reveal>
           <Reveal className="flex flex-col justify-center py-14 lg:col-span-6 lg:col-start-7 lg:py-20" delay={0.06}>
-            <p className="eyebrow">{professional.role}</p>
             <h1 className="page-title">{professional.name}</h1>
             <p className="lead mt-7">{professional.summary}</p>
-            <a className="editorial-link mt-8" href={`mailto:${siteInfo.email}`}>
+            <a className="editorial-link mt-8" href={siteInfo.emailHref}>
               <Mail aria-hidden="true" size={18} strokeWidth={1.5} />
               Contato institucional
             </a>

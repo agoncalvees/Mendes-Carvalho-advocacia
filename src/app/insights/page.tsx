@@ -6,7 +6,7 @@ import { insights } from "@/data/site.mock";
 import { assets } from "@/lib/assets";
 
 export const metadata: Metadata = {
-  title: "Insights",
+  title: "Blog",
   description: "Conteúdos demonstrativos sobre decisões jurídicas, negócios, tecnologia e ativos intelectuais.",
 };
 
@@ -14,7 +14,6 @@ export default function InsightsPage() {
   return (
     <>
       <PageHero
-        label="Insights"
         title="Conteúdo para decisões em transformação."
         description="Análises demonstrativas sobre marcas, tecnologia, disputas e relações de trabalho, sempre conectadas ao contexto empresarial."
         image={assets.openGraph}

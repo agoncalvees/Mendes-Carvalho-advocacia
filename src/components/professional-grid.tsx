@@ -4,31 +4,66 @@ import { ArrowUpRight } from "lucide-react";
 import { Reveal } from "@/components/reveal";
 import type { Professional } from "@/data/site.mock";
 
-export function ProfessionalGrid({ professionals }: { professionals: Professional[] }) {
+type ProfessionalGridProps = {
+  professionals: Professional[];
+  variant?: "default" | "compact";
+};
+
+export function ProfessionalGrid({ professionals, variant = "default" }: ProfessionalGridProps) {
+  const isCompact = variant === "compact";
+
   return (
-    <div className="grid gap-x-7 gap-y-14 md:grid-cols-12">
+    <div
+      className={
+        isCompact ? "grid gap-x-6 gap-y-8 md:grid-cols-3 md:gap-y-10" : "grid gap-x-7 gap-y-14 md:grid-cols-12"
+      }
+    >
       {professionals.map((professional, index) => (
         <Reveal
           key={professional.slug}
           delay={index * 0.05}
-          className={getColumnSpan(index, professionals.length)}
+          className={isCompact ? undefined : getColumnSpan(index, professionals.length)}
         >
-          <Link href={`/profissionais/${professional.slug}`} className="group block">
+          <Link
+            href={`/profissionais/${professional.slug}`}
+            aria-label={`Ver perfil de ${professional.name}`}
+            className="group block h-full"
+          >
             <div className="image-frame aspect-[4/5]">
               <Image
                 src={professional.image}
                 alt={professional.imageAlt}
                 fill
-                sizes={index === 0 ? "(max-width: 767px) 100vw, 50vw" : "(max-width: 767px) 100vw, 25vw"}
+                sizes={
+                  isCompact
+                    ? "(max-width: 767px) 100vw, 33vw"
+                    : index === 0
+                      ? "(max-width: 767px) 100vw, 50vw"
+                      : "(max-width: 767px) 100vw, 25vw"
+                }
                 className="object-cover object-top"
               />
             </div>
-            <div className="flex items-start justify-between gap-4 border-t border-line pt-5">
+            <div
+              className={
+                isCompact
+                  ? "flex items-start justify-between gap-4 border-t border-line pt-4"
+                  : "flex items-start justify-between gap-4 border-t border-line pt-5"
+              }
+            >
               <div>
-                <h3 className="font-serif text-[1.65rem] font-medium leading-tight tracking-[-0.025em]">
+                <h3
+                  className={
+                    isCompact
+                      ? "text-[1.35rem] font-medium leading-tight tracking-[-0.025em]"
+                      : "font-serif text-[1.65rem] font-medium leading-tight tracking-[-0.025em]"
+                  }
+                >
                   {professional.name}
                 </h3>
-                <p className="mt-2 text-sm font-medium text-muted">{professional.role}</p>
+                <p className={isCompact ? "mt-1.5 text-sm font-medium text-muted" : "mt-2 text-sm font-medium text-muted"}>
+                  {professional.role}
+                </p>
               </div>
               <ArrowUpRight
                 aria-hidden="true"
